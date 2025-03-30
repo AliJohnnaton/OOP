@@ -27,39 +27,33 @@ public class ProductBasket {
         return fullPrice;
     }
 
-    private boolean isEmpty() {
+    public String printBasket() {
+        boolean checkEmpty = true;
         for (Product p : basket) {
             if (p != null) {
-                return false;
+                checkEmpty = false;
+                break;
             }
         }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        if (!isEmpty()) {
+        if (!checkEmpty) {
             int specialCount = 0;
             for (Product p : basket) {
-                if (p != null) {
-                    if (p.isSpecial()) {
-                        specialCount++;
-                    }
+                if (p != null && p.isSpecial()) {
+                    specialCount++;
                 }
             }
             return Arrays.toString(basket) +
                     "\nИтого: " + getFullPrice() + "руб." +
                     "\nСпециальных товаров: " + specialCount;
-        } else
+        } else {
             return "В корзине пусто";
+        }
     }
 
     public boolean checkProductByName(String name) {
         for (Product p : basket) {
-            if (p != null) {
-                if (p.equals(name)) {
-                    return true;
-                }
+            if (p != null && p.getName().equals(name)) {
+                return true;
             }
         }
         return false;

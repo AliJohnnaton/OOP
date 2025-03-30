@@ -1,7 +1,5 @@
 package org.skypro.skyshop.product;
 
-import java.util.Objects;
-
 public abstract class Product {
     String name;
 
@@ -13,13 +11,13 @@ public abstract class Product {
 
     public abstract boolean isSpecial();
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "\n<" + name + " >";
     }
-
-    public boolean equals(String o) {
-        if (o == null) return false;
-        return Objects.equals(name, o);
-    }
 }
+
