@@ -9,7 +9,7 @@ import org.skypro.skyshop.product.SimpleProduct;
 public class App {
     public static void main(String[] args) {
         Product bread = new SimpleProduct("Батон <<Красная цена, нарезка>>", 30);
-        Product milk = new DiscountedProduct("Молоко <<Станция молочная>>", 85,10);
+        Product milk = new DiscountedProduct("Молоко <<Станция молочная>>", 85, 10);
         Product sausage = new FixPriceProduct("Колбаса <<Вязанка>>");
         Product cheese = new SimpleProduct("Сыр <<Liebendorf>>", 220);
         Product chocolate = new DiscountedProduct("Шоколад <<Россия - Щедрая душа>>", 80, 50);

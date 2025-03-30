@@ -8,6 +8,7 @@ public abstract class Product {
     Product(String name) {
         this.name = name;
     }
+
     public abstract int getPrice();
 
     public abstract boolean isSpecial();
@@ -16,6 +17,7 @@ public abstract class Product {
     public String toString() {
         return "\n<" + name + " >";
     }
+
     public boolean equals(String o) {
         if (o == null) return false;
         return Objects.equals(name, o);

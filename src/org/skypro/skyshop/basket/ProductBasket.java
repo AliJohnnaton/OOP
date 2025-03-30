@@ -39,17 +39,17 @@ public class ProductBasket {
     @Override
     public String toString() {
         if (!isEmpty()) {
-            int specialCount=0;
-            for (Product p:basket){
-                if(p!=null){
-                    if(p.isSpecial()){
+            int specialCount = 0;
+            for (Product p : basket) {
+                if (p != null) {
+                    if (p.isSpecial()) {
                         specialCount++;
                     }
                 }
             }
             return Arrays.toString(basket) +
-                    "\nИтого: " + getFullPrice() + "руб."+
-                    "\nСпециальных товаров: "+specialCount;
+                    "\nИтого: " + getFullPrice() + "руб." +
+                    "\nСпециальных товаров: " + specialCount;
         } else
             return "В корзине пусто";
     }
