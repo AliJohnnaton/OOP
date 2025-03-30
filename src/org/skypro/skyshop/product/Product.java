@@ -15,15 +15,25 @@ public class Product {
         return price;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "\n<" + name + " >: <" + price +
                 "руб.>";
     }
 
-    public boolean equals(String o) {
-        if (o == null) return false;
-        Product product = new Product(o, 0);
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
         return Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 }
