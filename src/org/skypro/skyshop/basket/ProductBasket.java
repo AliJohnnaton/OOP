@@ -18,13 +18,13 @@ public class ProductBasket {
     }
 
     public int getFullPrice() {
-        int fullprice = 0;
+        int fullPrice = 0;
         for (Product p : basket) {
             if (p != null) {
-                fullprice += p.getPrice();
+                fullPrice += p.getPrice();
             }
         }
-        return fullprice;
+        return fullPrice;
     }
 
     private boolean isEmpty() {
@@ -39,8 +39,17 @@ public class ProductBasket {
     @Override
     public String toString() {
         if (!isEmpty()) {
+            int specialCount=0;
+            for (Product p:basket){
+                if(p!=null){
+                    if(p.isSpecial()){
+                        specialCount++;
+                    }
+                }
+            }
             return Arrays.toString(basket) +
-                    "\nИтого: <" + getFullPrice() + "руб.>";
+                    "\nИтого: " + getFullPrice() + "руб."+
+                    "\nСпециальных товаров: "+specialCount;
         } else
             return "В корзине пусто";
     }
