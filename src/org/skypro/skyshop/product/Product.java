@@ -21,8 +21,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "\n<" + name + " >: <" + price +
-                "руб.>";
+        return "\n<" + name + " >: <" + price + "руб.>";
     }
 
     @Override
