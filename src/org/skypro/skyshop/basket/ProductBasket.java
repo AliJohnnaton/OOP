@@ -18,13 +18,13 @@ public class ProductBasket {
     }
 
     public int getFullPrice() {
-        int fullprice = 0;
+        int fullPrice = 0;
         for (Product p : basket) {
             if (p != null) {
-                fullprice += p.getPrice();
+                fullPrice += p.getPrice();
             }
         }
-        return fullprice;
+        return fullPrice;
     }
 
 
@@ -37,8 +37,14 @@ public class ProductBasket {
             }
         }
         if (!checkEmpty) {
+            int specialCount = 0;
+            for (Product p : basket) {
+                if (p != null && p.isSpecial()) {
+                    specialCount++;
+                }
+            }
             System.out.println(Arrays.toString(basket) +
-                    "\nИтого: <" + getFullPrice() + "руб.>");
+                    "\nИтого: " + getFullPrice() + "руб." + "\nСпециальных товаров: " + specialCount);
         } else {
             System.out.println("В корзине пусто");
         }

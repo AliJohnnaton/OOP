@@ -1,18 +1,18 @@
 package org.skypro.skyshop.product;
 
-import java.util.Objects;
+public abstract class Product {
+    String name;
 
-public class Product {
-    private final String name;
-    private final int price;
-
-    public Product(String name, int price) {
+    Product(String name) {
         this.name = name;
-        this.price = price;
     }
 
-    public int getPrice() {
-        return price;
+    public abstract int getPrice();
+
+    public abstract boolean isSpecial();
+
+    public String getName() {
+        return name;
     }
 
     public String getName() {
@@ -21,7 +21,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "\n<" + name + " >: <" + price + "руб.>";
+        return "\n<" + name + " >";
     }
 
     @Override
@@ -36,3 +36,4 @@ public class Product {
         return Objects.hashCode(name);
     }
 }
+
