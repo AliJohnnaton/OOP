@@ -27,7 +27,7 @@ public class ProductBasket {
         return fullPrice;
     }
 
-    public String printBasket() {
+    public void printBasket() {
         boolean checkEmpty = true;
         for (Product p : basket) {
             if (p != null) {
@@ -42,11 +42,10 @@ public class ProductBasket {
                     specialCount++;
                 }
             }
-            return Arrays.toString(basket) +
-                    "\nИтого: " + getFullPrice() + "руб." +
-                    "\nСпециальных товаров: " + specialCount;
+            System.out.println(Arrays.toString(basket) +
+                    "\nИтого: " + getFullPrice() + "руб." + "\nСпециальных товаров: " + specialCount);
         } else {
-            return "В корзине пусто";
+            System.out.println("В корзине пусто");
         }
     }
 

@@ -23,7 +23,7 @@ public class App {
         basket.addProduct(chocolate);
         basket.addProduct(chips);
 
-        System.out.println(basket.printBasket());
+        basket.printBasket();
 
         System.out.println(basket.getFullPrice() + "руб.");
 
@@ -33,7 +33,7 @@ public class App {
 
         basket.clear();
 
-        System.out.println(basket.printBasket());
+        basket.printBasket();
 
         System.out.println(basket.getFullPrice() + "руб.");
 
