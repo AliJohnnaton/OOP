@@ -18,42 +18,39 @@ public class ProductBasket {
     }
 
     public int getFullPrice() {
-        int fullPrice = 0;
+        int fullprice = 0;
         for (Product p : basket) {
             if (p != null) {
-                fullPrice += p.getPrice();
+                fullprice += p.getPrice();
             }
         }
-        return fullPrice;
+        return fullprice;
     }
 
-
-    public void printBasket() {
-        boolean checkEmpty = true;
+    private boolean isEmpty() {
         for (Product p : basket) {
             if (p != null) {
-                checkEmpty = false;
-                break;
+                return false;
             }
         }
-        if (!checkEmpty) {
-            int specialCount = 0;
-            for (Product p : basket) {
-                if (p != null && p.isSpecial()) {
-                    specialCount++;
-                }
-            }
-            System.out.println(Arrays.toString(basket) +
-                    "\nИтого: " + getFullPrice() + "руб." + "\nСпециальных товаров: " + specialCount);
-        } else {
-            System.out.println("В корзине пусто");
-        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        if (!isEmpty()) {
+            return Arrays.toString(basket) +
+                    "\nИтого: <" + getFullPrice() + "руб.>";
+        } else
+            return "В корзине пусто";
     }
 
     public boolean checkProductByName(String name) {
         for (Product p : basket) {
-            if (p != null && p.getName().equals(name)) {
-                return true;
+            if (p != null) {
+                if (p.equals(name)) {
+                    return true;
+                }
             }
         }
         return false;
