@@ -27,7 +27,6 @@ public class ProductBasket {
         return fullPrice;
     }
 
-
     public void printBasket() {
         boolean checkEmpty = true;
         for (Product p : basket) {
