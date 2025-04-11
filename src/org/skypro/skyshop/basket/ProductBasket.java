@@ -2,27 +2,20 @@ package org.skypro.skyshop.basket;
 
 import org.skypro.skyshop.product.Product;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductBasket {
-    private final Product[] basket = new Product[5];
+    List<Product> basket = new ArrayList<>();
 
     public void addProduct(Product product) {
-        for (int i = 0; i < basket.length; i++) {
-            if (basket[i] == null) {
-                basket[i] = product;
-                return;
-            }
-        }
-        System.out.println("Невозможно добавить продукт");
+        basket.add(product);
     }
 
     public int getFullPrice() {
         int fullPrice = 0;
         for (Product p : basket) {
-            if (p != null) {
-                fullPrice += p.getPrice();
-            }
+            fullPrice += p.getPrice();
         }
         return fullPrice;
     }
@@ -42,7 +35,7 @@ public class ProductBasket {
                     specialCount++;
                 }
             }
-            System.out.println(Arrays.toString(basket) +
+            System.out.println(basket +
                     "\nИтого: " + getFullPrice() + "руб." + "\nСпециальных товаров: " + specialCount);
         } else {
             System.out.println("В корзине пусто");
@@ -51,7 +44,7 @@ public class ProductBasket {
 
     public boolean checkProductByName(String name) {
         for (Product p : basket) {
-            if (p != null && p.getName().equals(name)) {
+            if (p.getName().equals(name)) {
                 return true;
             }
         }
@@ -59,6 +52,24 @@ public class ProductBasket {
     }
 
     public void clear() {
-        Arrays.fill(basket, null);
+        basket.clear();
+    }
+
+    public List<String> removeByName(String name) {
+        List<Product> removing = new ArrayList<>();
+        for (Product p : basket) {
+            if (p.getName().contains(name)) {
+                removing.add(p);
+            }
+        }
+        List<String> returning = new ArrayList<>();
+        for (Product p : removing) {
+            returning.add(p.getName());
+            basket.remove(p);
+        }
+        if (returning.isEmpty()) {
+            returning.add("Список пуст");
+        }
+        return returning;
     }
 }
