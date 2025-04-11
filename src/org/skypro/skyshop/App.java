@@ -1,6 +1,7 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.article.Article;
+import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.exceptions.BestResultNotFoundException;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
@@ -9,13 +10,15 @@ import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.searchable.Searchable;
 import org.skypro.skyshop.searchengine.SearchEngine;
 
+import java.util.List;
+
 public class App {
     public static void main(String[] args) {
         Product bread = new SimpleProduct(null, 0);
         System.out.println(bread);
         Product milk = new DiscountedProduct("", 0, 101);
         System.out.println(milk);
-        Product sausage = new FixPriceProduct("КолбасаКолбасаКолбасаКолбаса <<Вязанка>>");
+        Product sausage = new FixPriceProduct("Колбаса <<Вязанка>>");
         System.out.println(sausage);
         Product cheese = new SimpleProduct("Сыр <<Liebendorf>>", 220);
         System.out.println(cheese);
@@ -29,7 +32,35 @@ public class App {
         System.out.println(sausageThird);
         System.out.println();
 
-        SearchEngine searchables = new SearchEngine(10);
+        ProductBasket basket = new ProductBasket();
+        basket.addProduct(bread);
+        basket.addProduct(milk);
+        basket.addProduct(sausage);
+        basket.addProduct(cheese);
+        basket.addProduct(chocolate);
+        basket.addProduct(chips);
+
+        System.out.println();
+        System.out.println("Корзина");
+        basket.printBasket();
+        if (basket.checkProductByName("Колбаса")) {
+            System.out.println("Есть такой продукт");
+        } else {
+            System.out.println("Нет такого");
+        }
+        System.out.println(basket.removeByName("Колбаса"));
+        basket.printBasket();
+        if (basket.checkProductByName("Абрикос")) {
+            System.out.println("Есть такой продукт");
+        } else {
+            System.out.println("Нет такого");
+        }
+        System.out.println(basket.removeByName("Абрикос"));
+        System.out.println();
+        basket.clear();
+        System.out.println(basket);
+
+        SearchEngine searchables = new SearchEngine();
         searchables.add(bread);
         searchables.add(milk);
         searchables.add(sausage);
@@ -39,14 +70,14 @@ public class App {
         searchables.add(sausageSecond);
         searchables.add(sausageThird);
         try {
-            System.out.println(searchables.search("Колбасу"));
+            System.out.println(searchables.search("Колбаса"));
         } catch (BestResultNotFoundException e) {
             System.out.println(e.getMessage());
         }
 
         System.out.println();
         try {
-            Searchable searchingTmp = searchables.search("о");
+            List<Searchable> searchingTmp = searchables.search("о");
             System.out.println(searchingTmp);
         } catch (BestResultNotFoundException e) {
             System.out.println(e.getMessage());
