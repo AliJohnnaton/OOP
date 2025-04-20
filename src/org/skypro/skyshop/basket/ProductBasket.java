@@ -3,36 +3,35 @@ package org.skypro.skyshop.basket;
 import org.skypro.skyshop.product.Product;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductBasket {
-    List<Product> basket = new ArrayList<>();
+    Map<String, List<Product>> basket = new HashMap<>();
 
-    public void addProduct(Product product) {
-        basket.add(product);
+    public void addProduct(String name, Product product) {
+        basket.computeIfAbsent(name, k -> new ArrayList<>()).add(product);
     }
 
     public int getFullPrice() {
         int fullPrice = 0;
-        for (Product p : basket) {
-            fullPrice += p.getPrice();
+        for (Map.Entry<String, List<Product>> e : basket.entrySet()) {
+            for (Product p : e.getValue()) {
+                fullPrice += p.getPrice();
+            }
         }
         return fullPrice;
     }
 
     public void printBasket() {
-        boolean checkEmpty = true;
-        for (Product p : basket) {
-            if (p != null) {
-                checkEmpty = false;
-                break;
-            }
-        }
-        if (!checkEmpty) {
+        if (!basket.isEmpty()) {
             int specialCount = 0;
-            for (Product p : basket) {
-                if (p != null && p.isSpecial()) {
-                    specialCount++;
+            for (Map.Entry<String, List<Product>> e : basket.entrySet()) {
+                for (Product p : e.getValue()) {
+                    if (p != null && p.isSpecial()) {
+                        specialCount++;
+                    }
                 }
             }
             System.out.println(basket +
@@ -43,12 +42,7 @@ public class ProductBasket {
     }
 
     public boolean checkProductByName(String name) {
-        for (Product p : basket) {
-            if (p.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
+        return basket.containsKey(name);
     }
 
     public void clear() {
@@ -56,15 +50,17 @@ public class ProductBasket {
     }
 
     public List<String> removeByName(String name) {
-        List<Product> removing = new ArrayList<>();
-        for (Product p : basket) {
-            if (p.getName().contains(name)) {
-                removing.add(p);
+        List<String> returning = new ArrayList<>();
+        List<String> removingNames = new ArrayList<>();
+        for (Map.Entry<String, List<Product>> e : basket.entrySet()) {
+            if (e.getKey().contains(name)) {
+                removingNames.add(e.getKey());
+                for (Product p : e.getValue()) {
+                    returning.add(e.getKey() + " " + p.getName());
+                }
             }
         }
-        List<String> returning = new ArrayList<>();
-        for (Product p : removing) {
-            returning.add(p.getName());
+        for (String p : removingNames) {
             basket.remove(p);
         }
         if (returning.isEmpty()) {
