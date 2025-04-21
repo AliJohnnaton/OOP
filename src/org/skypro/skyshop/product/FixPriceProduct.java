@@ -1,7 +1,5 @@
 package org.skypro.skyshop.product;
 
-import org.skypro.skyshop.searchable.Searchable;
-
 public class FixPriceProduct extends Product {
     public static final int FIX_PRICE = 300;
 
@@ -21,10 +19,5 @@ public class FixPriceProduct extends Product {
 
     public String toString() {
         return super.toString() + " Фиксированная цена: " + FIX_PRICE + "руб.";
-    }
-
-    @Override
-    public int compareTo(Searchable o) {
-        return this.searchTerm().compareTo(o.searchTerm());
     }
 }
