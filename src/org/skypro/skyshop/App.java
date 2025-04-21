@@ -10,21 +10,23 @@ import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.searchable.Searchable;
 import org.skypro.skyshop.searchengine.SearchEngine;
 
-import java.util.List;
+import java.util.TreeMap;
 
 public class App {
     public static void main(String[] args) {
-        Product bread = new SimpleProduct(null, 0);
+        Product bread = new SimpleProduct("Красная цена", 24);
         System.out.println(bread);
-        Product milk = new DiscountedProduct("", 0, 101);
+        Product milk = new DiscountedProduct("Счастливое детство", 69, 10);
         System.out.println(milk);
-        Product sausage = new FixPriceProduct("Колбаса <<Вязанка>>");
+        Product sausage = new FixPriceProduct("Вязанка");
         System.out.println(sausage);
-        Product cheese = new SimpleProduct("Сыр <<Liebendorf>>", 220);
+        Product sausagePAPA = new FixPriceProduct("Папа Может");
+        System.out.println(sausagePAPA);
+        Product cheese = new SimpleProduct("Liebendorf", 220);
         System.out.println(cheese);
-        Product chocolate = new DiscountedProduct("Шоколад <<Россия - Щедрая душа>>", 80, 50);
+        Product chocolate = new DiscountedProduct("Россия - Щедрая душа", 80, 50);
         System.out.println(chocolate);
-        Product chips = new SimpleProduct("Чипсы <<Lay\\'s>>", 175);
+        Product chips = new SimpleProduct("Lay\\'s", 175);
         System.out.println(chips);
         Article sausageSecond = new Article("Колбаса <<Папа может>>", "Одна из тех кооооооооооолбас что мне нравиться");
         System.out.println(sausageSecond);
@@ -33,12 +35,13 @@ public class App {
         System.out.println();
 
         ProductBasket basket = new ProductBasket();
-        basket.addProduct(bread);
-        basket.addProduct(milk);
-        basket.addProduct(sausage);
-        basket.addProduct(cheese);
-        basket.addProduct(chocolate);
-        basket.addProduct(chips);
+        basket.addProduct("Хлеб", bread);
+        basket.addProduct("Молоко", milk);
+        basket.addProduct("Колбаса", sausage);
+        basket.addProduct("Колбаса", sausagePAPA);
+        basket.addProduct("Сыр", cheese);
+        basket.addProduct("Шоколад", chocolate);
+        basket.addProduct("Чипсы", chips);
 
         System.out.println();
         System.out.println("Корзина");
@@ -58,7 +61,7 @@ public class App {
         System.out.println(basket.removeByName("Абрикос"));
         System.out.println();
         basket.clear();
-        System.out.println(basket);
+        basket.printBasket();
 
         SearchEngine searchables = new SearchEngine();
         searchables.add(bread);
@@ -77,7 +80,7 @@ public class App {
 
         System.out.println();
         try {
-            List<Searchable> searchingTmp = searchables.search("о");
+            TreeMap<String, Searchable> searchingTmp = searchables.search("о");
             System.out.println(searchingTmp);
         } catch (BestResultNotFoundException e) {
             System.out.println(e.getMessage());
