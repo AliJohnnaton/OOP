@@ -18,6 +18,5 @@ public class FixPriceProduct extends Product {
     }
 
     public String toString() {
-        return super.toString() + " Фиксированная цена: " + FIX_PRICE + "руб.";
-    }
+        return super.toString() + " Фиксированная цена: " + FIX_PRICE + "руб.";}
 }

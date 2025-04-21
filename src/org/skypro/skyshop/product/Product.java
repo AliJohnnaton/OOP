@@ -72,4 +72,5 @@ public abstract class Product implements Searchable, Comparable<Searchable> {
     public int compareTo(Searchable o) {
         return this.searchTerm().compareTo(o.searchTerm());
     }
+
 }

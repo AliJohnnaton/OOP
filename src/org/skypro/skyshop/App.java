@@ -1,6 +1,7 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.article.Article;
+import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.exceptions.BestResultNotFoundException;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
@@ -33,34 +34,35 @@ public class App {
         System.out.println(sausageThird);
         System.out.println();
 
-//        ProductBasket basket = new ProductBasket();
-//        basket.addProduct("Хлеб", bread);
-//        basket.addProduct("Молоко", milk);
-//        basket.addProduct("Колбаса", sausage);
-//        basket.addProduct("Колбаса", sausagePAPA);
-//        basket.addProduct("Сыр", cheese);
-//        basket.addProduct("Шоколад", chocolate);
-//        basket.addProduct("Чипсы", chips);
-//
-//        System.out.println();
-//        System.out.println("Корзина");
-//        basket.printBasket();
-//        if (basket.checkProductByName("Колбаса")) {
-//            System.out.println("Есть такой продукт");
-//        } else {
-//            System.out.println("Нет такого");
-//        }
-//        System.out.println(basket.removeByName("Колбаса"));
-//        basket.printBasket();
-//        if (basket.checkProductByName("Абрикос")) {
-//            System.out.println("Есть такой продукт");
-//        } else {
-//            System.out.println("Нет такого");
-//        }
-//        System.out.println(basket.removeByName("Абрикос"));
-//        System.out.println();
-//        basket.clear();
-//        basket.printBasket();
+        ProductBasket basket = new ProductBasket();
+        basket.addProduct("Хлеб", bread);
+        basket.addProduct("Молоко", milk);
+        basket.addProduct("Колбаса", sausage);
+        basket.addProduct("Колбаса", sausagePAPA);
+        basket.addProduct("Сыр", cheese);
+        basket.addProduct("Шоколад", chocolate);
+        basket.addProduct("Чипсы", chips);
+
+        System.out.println();
+        System.out.println("Корзина");
+        basket.printBasket();
+        if (basket.checkProductByName("Колбаса")) {
+            System.out.println("Есть такой продукт");
+        } else {
+            System.out.println("Нет такого");
+        }
+        System.out.println(basket.removeByName("Колбаса"));
+        basket.printBasket();
+        if (basket.checkProductByName("Абрикос")) {
+            System.out.println("Есть такой продукт");
+        } else {
+            System.out.println("Нет такого");
+        }
+        System.out.println(basket.removeByName("Абрикос"));
+        System.out.println();
+        basket.clear();
+        basket.printBasket();
+
 
         SearchEngine searchables = new SearchEngine();
         searchables.add(bread);

@@ -62,7 +62,6 @@ public class DiscountedProduct extends Product {
         DiscountedProduct that = (DiscountedProduct) o;
         return price == that.price && discount == that.discount;
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), price, discount);

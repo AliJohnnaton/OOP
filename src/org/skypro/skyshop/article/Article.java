@@ -41,8 +41,7 @@ public class Article implements Searchable, Comparable<Searchable> {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Article article)) return false;
-        return Objects.equals(name, article.name) && Objects.equals(text, article.text);
-    }
+        return Objects.equals(name, article.name) && Objects.equals(text, article.text);}
 
     @Override
     public int hashCode() {

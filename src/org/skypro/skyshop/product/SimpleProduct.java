@@ -46,7 +46,6 @@ public class SimpleProduct extends Product {
         SimpleProduct that = (SimpleProduct) o;
         return price == that.price;
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), price);

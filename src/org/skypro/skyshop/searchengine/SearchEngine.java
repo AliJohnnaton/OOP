@@ -19,8 +19,7 @@ public class SearchEngine {
         Set<Searchable> searchArray = new TreeSet<>(new SearchableComporator());
         for (Searchable s : searchableArray) {
             if (s != null && s.searchTerm().contains(substring)) {
-                searchArray.add(s);
-            }
+                searchArray.add(s);}
         }
         if (searchArray.isEmpty()) {
             throw new BestResultNotFoundException(("Для поискового запроса: <" + substring + ">, не нашлось подходящего результата"));
