@@ -64,8 +64,7 @@ public class ProductBasket {
             basket.remove(p);
         }
         if (returning.isEmpty()) {
-            returning.add("Список пуст");
-        }
+            returning.add("Список пуст");}
         return returning;
     }
 }

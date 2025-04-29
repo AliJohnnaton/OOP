@@ -10,23 +10,23 @@ import org.skypro.skyshop.product.SimpleProduct;
 import org.skypro.skyshop.searchable.Searchable;
 import org.skypro.skyshop.searchengine.SearchEngine;
 
-import java.util.TreeMap;
+import java.util.Set;
 
 public class App {
     public static void main(String[] args) {
-        Product bread = new SimpleProduct("Красная цена", 24);
+        Product bread = new SimpleProduct("Хлеб Красная цена", 24);
         System.out.println(bread);
-        Product milk = new DiscountedProduct("Счастливое детство", 69, 10);
+        Product milk = new DiscountedProduct("Молоко Счастливое детство", 69, 10);
         System.out.println(milk);
-        Product sausage = new FixPriceProduct("Вязанка");
+        Product sausage = new FixPriceProduct("Колбаса Вязанка          ");
         System.out.println(sausage);
-        Product sausagePAPA = new FixPriceProduct("Папа Может");
+        Product sausagePAPA = new FixPriceProduct("Колбаса Папа Может");
         System.out.println(sausagePAPA);
-        Product cheese = new SimpleProduct("Liebendorf", 220);
+        Product cheese = new SimpleProduct("Сыр Liebendorf", 220);
         System.out.println(cheese);
-        Product chocolate = new DiscountedProduct("Россия - Щедрая душа", 80, 50);
+        Product chocolate = new DiscountedProduct("Шоколад Россия - Щедрая душа", 80, 50);
         System.out.println(chocolate);
-        Product chips = new SimpleProduct("Lay\\'s", 175);
+        Product chips = new SimpleProduct("Чипсы Lay\\'s", 175);
         System.out.println(chips);
         Article sausageSecond = new Article("Колбаса <<Папа может>>", "Одна из тех кооооооооооолбас что мне нравиться");
         System.out.println(sausageSecond);
@@ -63,10 +63,12 @@ public class App {
         basket.clear();
         basket.printBasket();
 
+
         SearchEngine searchables = new SearchEngine();
         searchables.add(bread);
         searchables.add(milk);
         searchables.add(sausage);
+        searchables.add(sausagePAPA);
         searchables.add(cheese);
         searchables.add(chocolate);
         searchables.add(chips);
@@ -80,7 +82,7 @@ public class App {
 
         System.out.println();
         try {
-            TreeMap<String, Searchable> searchingTmp = searchables.search("о");
+            Set<Searchable> searchingTmp = searchables.search("о");
             System.out.println(searchingTmp);
         } catch (BestResultNotFoundException e) {
             System.out.println(e.getMessage());
