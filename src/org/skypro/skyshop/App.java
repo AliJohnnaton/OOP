@@ -15,24 +15,14 @@ import java.util.Set;
 public class App {
     public static void main(String[] args) {
         Product bread = new SimpleProduct("Хлеб Красная цена", 24);
-        System.out.println(bread);
         Product milk = new DiscountedProduct("Молоко Счастливое детство", 69, 10);
-        System.out.println(milk);
         Product sausage = new FixPriceProduct("Колбаса Вязанка          ");
-        System.out.println(sausage);
         Product sausagePAPA = new FixPriceProduct("Колбаса Папа Может");
-        System.out.println(sausagePAPA);
         Product cheese = new SimpleProduct("Сыр Liebendorf", 220);
-        System.out.println(cheese);
         Product chocolate = new DiscountedProduct("Шоколад Россия - Щедрая душа", 80, 50);
-        System.out.println(chocolate);
         Product chips = new SimpleProduct("Чипсы Lay\\'s", 175);
-        System.out.println(chips);
         Article sausageSecond = new Article("Колбаса <<Папа может>>", "Одна из тех кооооооооооолбас что мне нравиться");
-        System.out.println(sausageSecond);
         Article sausageThird = new Article("Колбаса <<Дугушка>>", "Постоянно её беру");
-        System.out.println(sausageThird);
-        System.out.println();
 
         ProductBasket basket = new ProductBasket();
         basket.addProduct("Хлеб", bread);
