@@ -38,7 +38,7 @@ public abstract class Product implements Searchable, Comparable<Searchable> {
 
     @Override
     public String toString() {
-        return "\n<" + name + " >";
+        return "<" + name + " >";
     }
 
     @Override
